@@ -1,0 +1,7 @@
+{
+  "load_extensions": {
+  	"control":true,
+    "getquestion":true,
+    "url":true
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "load_extensions": {
+    "nbextensions_configurator/config_menu/main": true,
+    "contrib_nbextensions_help_item/main": true,
+    "jupyter-js-widgets/extension": true,
+    "cell": true,
+    "codecell": true,
+    "control": true,
+    "debug":true,  
+    "disablenotebookextensions": true,
+    "getattempts": true,
+    "getquestion": true,
+    "getsolutions": true, 
+    "insertcell": true,
+    "jupyterevents": true,
+    "jupyterlogger": true,
+    "reloadsolutions":true,  
+    "submitcontainer": true,
+    "submithack": true,
+    "textcell": true,
+    "moveablecell":true,
+    "reloadsolutions": true,
+    "setcolorsandeditable":true,
+    "setupjupytereventlogging": true,
+    "showhints":true,
+    "submitattempt": true,
+    "submit": true,
+    "url": true,
+    "username": true
+  }
+}
