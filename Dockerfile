@@ -1,5 +1,4 @@
-RUN pip install --no-cache-dir notebook==5.*
-jupyter/scipy-notebook:cf6258237ff9
+FROM jupyter/scipy-notebook:cf6258237ff9
 
 ARG NB_USER=jovyan
 ARG NB_UID=1000
