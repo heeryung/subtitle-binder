@@ -5,4 +5,4 @@ dependencies:
   - pandas
   - pip
   - pip:
-    - jupyter_contrib-nbextensions
+    - jupyter_contrib_nbextensions
