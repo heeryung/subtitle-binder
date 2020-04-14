@@ -164,12 +164,12 @@ define([
 
 
 
-        Jupyter.toolbar.add_buttons_group([{
-            label: 'Help Document',
-            icon: 'fa-info',
-            id: 'debug-button',
-            callback: handlerSubmit
-        }]);
+//         Jupyter.toolbar.add_buttons_group([{
+//             label: 'Help Document',
+//             icon: 'fa-info',
+//             id: 'debug-button',
+//             callback: handlerSubmit
+//         }]);
 
     }
 

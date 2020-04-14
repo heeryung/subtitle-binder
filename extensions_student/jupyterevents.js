@@ -286,6 +286,24 @@ define([
         });
       }
     }
+  
+////////////////////////////////////////////////////////////////////////////////
+    /**
+        SrlHintUserResponse
+        Trigger: User has answered a prompt and clicked Next
+        Additional Data:
+    */
+   class SrlHintUserResponse extends JupyterEvent {
+    bindJupyterEvent() {
+      require(["nbextensions/showhints"], function() {
+        document.addEventListener("HintUserResponse", function(event) {
+          var details = {};
+          details = event.detail;
+          JupyterEvent.prototype.dispatchJupyterEvent("SrlHintUserResponse", details);
+        }, false);
+      });
+    }
+  }
 
 ////////////////////////////////////////////////////////////////////////////////
     /**
@@ -316,10 +334,11 @@ define([
     JupyterEvents.SaveNotebookEvent = SaveNotebookEvent;
     JupyterEvents.ShowHintEvent = ShowHintEvent;
     JupyterEvents.ChangeCellsInViewEvent = ChangeCellsInViewEvent;
-    JupyterEvents.SrlDisplayHintPromptEvent = SrlDisplayHintPromptEvent;
-    JupyterEvents.SrlDisplayHintAnswerEvent = SrlDisplayHintAnswerEvent;
-    JupyterEvents.SrlClickNextEvent = SrlClickNextEvent;
+    // JupyterEvents.SrlDisplayHintPromptEvent = SrlDisplayHintPromptEvent;
+    // JupyterEvents.SrlDisplayHintAnswerEvent = SrlDisplayHintAnswerEvent;
+    // JupyterEvents.SrlClickNextEvent = SrlClickNextEvent;
     JupyterEvents.SrlAssignConditionEvent = SrlAssignConditionEvent;
+    JupyterEvents.SrlHintUserResponse = SrlHintUserResponse;
 
     return JupyterEvents;
 });

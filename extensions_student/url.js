@@ -7,8 +7,8 @@ define(['jquery', 'require'], function ($, require){
 		var returnBase = "";
 		switch (domain.substring(0, 9)) {
 			case "localhost":
-//				returnBase = "http://127.0.0.1:5000/";
-				returnBase = "https://api.mentoracademy.org/";
+				returnBase = "http://127.0.0.1:5000/";
+//				returnBase = "https://api.mentoracademy.org/";
 			break;
 			case "jupyter-d":
 				returnBase = "https://api-dev.mentoracademy.org/";
@@ -28,8 +28,9 @@ define(['jquery', 'require'], function ($, require){
 		}
 		return returnBase + apiCall;
 	}
-
+	
 	return{
 		getUrlForConfig: getUrlForConfig
-	};
+	};		
 });
+

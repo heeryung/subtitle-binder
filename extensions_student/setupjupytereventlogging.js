@@ -29,10 +29,11 @@ function load_ipython_extension(){
         JupyterEvents.SaveNotebookEvent,
         JupyterEvents.ShowHintEvent,
         JupyterEvents.ChangeCellsInViewEvent,
-        JupyterEvents.SrlDisplayHintPromptEvent,
-        JupyterEvents.SrlDisplayHintAnswerEvent,
-        JupyterEvents.SrlClickNextEvent,
-        JupyterEvents.SrlAssignConditionEvent
+        // JupyterEvents.SrlDisplayHintPromptEvent,
+        // JupyterEvents.SrlDisplayHintAnswerEvent,
+        // JupyterEvents.SrlClickNextEvent,
+        JupyterEvents.SrlAssignConditionEvent,
+        JupyterEvents.SrlHintUserResponse
       ];
       jupyterEventsToLog.forEach(function(jupyterEvent, index) {
         document.addEventListener(jupyterEvent.name, logRecord, false);

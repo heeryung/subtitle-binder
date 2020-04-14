@@ -4,7 +4,8 @@ define([
     'base/js/namespace',
     'base/js/dialog',
     'base/js/i18n',
-    'nbextensions/url',
+    'nbextensions/showdown',
+    'nbextensions/url',    
     'nbextensions/username',
     'nbextensions/external/seedrandom'
 ], function ($,
@@ -12,6 +13,7 @@ define([
              Jupyter,
              dialog,
              i18n,
+             showdown,
              getUrl,
              getUsername,
              seedrandom) {
@@ -43,21 +45,21 @@ define([
     type_4_questions.push("How did the hint lead you to rethink your initial plans to solve the task?");
 
 
-//    var random_before = Math.floor(Math.random() * 3);
+    var random_before = Math.floor(Math.random() * 3);
 
-//    var random_after = Math.floor(Math.random() * 3 + 3);
+    var random_after = Math.floor(Math.random() * 3 + 3);
 
-	var random_before = 0;
-	var random_after = 0;
+//	var random_before = 0;
+//	var random_after = 0;
 
     var random_1 = Math.floor(Math.random() * 4);
-    var random_2 = Math.floor(Math.random() * 2);
-    var random_3 = Math.floor(Math.random() * 3);
+    var random_2 = Math.floor(Math.random() * 4);
+    var random_3 = Math.floor(Math.random() * 4);
     var random_4 = Math.floor(Math.random() * 4);
 
     function dispatchAssignConditionEvent() {
         let eventTitle = "AssignHintConditionEvent";
-        let prompt1 = random_before === 0 ? "None" : random_before;
+        let prompt1 = random_before;
         let prompt2 = random_after;
         var event = new CustomEvent(eventTitle, {
             detail: {
@@ -84,7 +86,8 @@ define([
             let mapTypeToEventName = {
                 prompt: "OpenHintPromptEvent",
                 hint: "OpenHintAnswerEvent",
-                next: "ClickHintNextEvent"
+                next: "ClickHintNextEvent",
+                response: "HintUserResponse"
             };
             let eventTitle = mapTypeToEventName[type];
             hint.type = type;
@@ -190,7 +193,7 @@ define([
         }
 
         function type_1_before(hintText, hint) {
-            dispatchHintEvent("prompt", "1", hint);
+            // dispatchHintEvent("prompt", "1", hint);
             var form = $("<form></form>").attr("id", "form");
             var prompt = $("<h4>" + type_1_questions[random_1] + "</h4>").attr("id", "prompt");
             var ans = $("<div><textarea rows='5' style='max-width: 100%; width: 100%' id='ans' placeholder = 'Your Answer'/></div>");
@@ -211,8 +214,10 @@ define([
                         'class': 'btn-primary', 'id': 'next',
                         'click': function () {
                             hint.user_answer = $('#ans').val();
+                            hint.prompt = type_1_questions[random_1]
+                            dispatchHintEvent('response', '1', hint)
                             hint_text(hintText, hint);
-                            dispatchHintEvent("next", "1", hint);
+                            // dispatchHintEvent("next", "1", hint);
                         }
                     }
                 }
@@ -220,7 +225,7 @@ define([
         }
 
         function type_2_before(hintText, hint) {
-            dispatchHintEvent("prompt", "2", hint);
+            // dispatchHintEvent("prompt", "2", hint);
             var form = $("<form></form>").attr("id", "form");
             var prompt = $("<h4>" + type_2_questions[random_2] + "</h4>").attr("id", "prompt");
             var ans = $("<div><textarea rows='5' style='max-width: 100%; width: 100%' id='ans' placeholder = 'Your Answer'/></div>");
@@ -241,8 +246,10 @@ define([
                         'class': 'btn-primary', 'id': 'next',
                         'click': function () {
                             hint.user_answer = $('#ans').val();
+                            hint.prompt = type_2_questions[random_2]
+                            dispatchHintEvent('response', '2', hint)
                             hint_text(hintText, hint);
-                            dispatchHintEvent("next", "2", hint);
+                            // dispatchHintEvent("next", "2", hint);
                         }
                     }
                 }
@@ -250,10 +257,15 @@ define([
         }
 
         function hint_text(hintText, hint) {
-            dispatchHintEvent("hint", null, hint);
+            // dispatchHintEvent("hint", null, hint);
+                        
+            var converter = new showdown.Converter(),
+            text = hintText,
+            htmltext = converter.makeHtml(text);
+            
             var form = $("<form></form>").attr("id", "form");
-            var hint_ar = $("<h4>" + hintText + "</h4>").attr("id", "prompt");
-
+//            var hint_ar = $("<h4>" + hintText + "</div></h4>").attr("id", "prompt");
+            var hint_ar = $("<h4>" + htmltext + "</h4>").attr("id", "prompt");
             form.append(hint_ar);
             dialog.modal({
                 title: i18n.msg._('Hint'),
@@ -269,7 +281,7 @@ define([
                     'Next': {
                         'class': 'btn-primary', 'id': 'next',
                         'click': function () {
-                            dispatchHintEvent("next", null, hint);
+                            // dispatchHintEvent("next", null, hint);
                             if (random_after == 3) {
                                 type_3_after(hint);
                             } else if (random_after == 4) {
@@ -284,7 +296,7 @@ define([
         }
 
         function type_3_after(hint) {
-            dispatchHintEvent("prompt", "3", hint);
+            // dispatchHintEvent("prompt", "3", hint);
             var form = $("<form></form>").attr("id", "form");
             var prompt = $("<h4>" + type_3_questions[random_3] + "</h4>").attr("id", "prompt");
             var ans = $("<div><textarea rows='5' style='max-width: 100%; width: 100%' id='ans' placeholder = 'Your Answer'/></div>");
@@ -306,7 +318,9 @@ define([
                         'class': 'btn-primary', 'id': 'next',
                         'click': function () {
                             hint.user_answer = $('#ans').val();
-                            dispatchHintEvent("next", "3", hint);
+                            hint.prompt = type_3_questions[random_3]
+                            dispatchHintEvent('response', '3', hint)
+                            // dispatchHintEvent("next", "3", hint);
                         }
                     }
                 }
@@ -314,7 +328,7 @@ define([
         }
 
         function type_4_after(hint) {
-            dispatchHintEvent("prompt", "4", hint);
+            // dispatchHintEvent("prompt", "4", hint);
             var form = $("<form></form>").attr("id", "form");
             var prompt = $("<h4>" + type_4_questions[random_4] + "</h4>").attr("id", "prompt");
             var ans = $("<div><textarea rows='5' style='max-width: 100%; width: 100%' id='ans' placeholder = 'Your Answer'/></div>");
@@ -336,7 +350,9 @@ define([
                         'class': 'btn-primary', 'id': 'next',
                         'click': function () {
                             hint.user_answer = $('#ans').val();
-                            dispatchHintEvent("next", "4", hint);
+                            hint.prompt = type_4_questions[random_4]
+                            dispatchHintEvent('response', '4', hint)
+                            // dispatchHintEvent("next", "4", hint);
                         }
                     }
                 }
@@ -372,9 +388,11 @@ define([
             if (student_solution_code_index - part_description_index - 1 < array_hints.length) {
                 // If it's not the last hint
                 var hint = array_hints[student_solution_code_index - part_description_index - 1];
-                if (random_before == 0) {
+                hint.random_before = random_before;
+                hint.random_after = random_after;
+                if (random_before === 0) {
                     hint_text(hint.hint_text, hint);
-                } else if (random_before == 1) {
+                } else if (random_before === 1) {
                     type_1_before(hint.hint_text, hint);
                 } else {
                     type_2_before(hint.hint_text, hint);

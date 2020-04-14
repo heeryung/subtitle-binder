@@ -5,8 +5,10 @@ define(['jquery', 'require'], function ($, require){
 			return "localhost";
 		}
 		else {
-			url = new URL(window.location.href);
-			user_id = url.searchParams.get("id");
+// 			url = new URL(window.location.href);
+// 			user_id = url.searchParams.get("id");
+			url = window.location.href;            
+            user_id = url;
 			return user_id;
 		}
 	}

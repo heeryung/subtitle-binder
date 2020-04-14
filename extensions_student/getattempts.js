@@ -104,12 +104,14 @@ function load_ipython_extension(){
 					user_id = "localhost";
 				}
 				else{
-					var temp = username_all.split("_");
-					user_id = temp[temp.length - 1];
-					username = username_all.substr(0, username_all.length - user_id.length - 1);
-					if(username == ""){
-						username = user_id;
-					}
+                    username = username_all;
+                    user_id = username;
+// 					var temp = username_all.split("_");
+// 					user_id = temp[temp.length - 1];
+// 					username = username_all.substr(0, username_all.length - user_id.length - 1);
+// 					if(username == ""){
+// 						username = user_id;
+// 					}
 				}
 				var data = {"question_id": question_id, "username": username, "user_id": user_id};
         		var api_url = getUrl.getUrlForConfig("getStudentQuestion");

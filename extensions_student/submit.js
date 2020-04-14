@@ -45,12 +45,14 @@ define([
                 username = "localhost";
                 user_id = "localhost";
             } else {
-                var temp = username_all.split("_");
-                user_id = temp[temp.length - 1];
-                username = username_all.substr(0, username_all.length - user_id.length - 1);
-                if (username == "") {
-                    username = user_id;
-                }
+//                 var temp = username_all.split("_");
+//                 user_id = temp[temp.length - 1];
+//                 username = username_all.substr(0, username_all.length - user_id.length - 1);
+//                 if (username == "") {
+//                     username = user_id;
+                username = username_all;
+                user_id = username;
+//                 }
             }
 
 
@@ -364,8 +366,8 @@ define([
                 id: 'submit-solution',
                 callback: submitNotebookInfo//handlerSubmit
             }]);
-        }
-
+        };
+        $("#submit-solution").css({"background-color": "rgb(42, 115, 204)", "color": "white"});
 
     }
 

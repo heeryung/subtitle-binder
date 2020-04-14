@@ -58,12 +58,12 @@ define([
 			httpGetAsync(url, email);
 		}
 
-		Jupyter.toolbar.add_buttons_group([{
-			label: 'Submit Container',
-			icon: 'fa-floppy-o',
-			id: 'submit-container',
-			callback: createDialog
-		}]);
+// 		Jupyter.toolbar.add_buttons_group([{
+// 			label: 'Submit Container',
+// 			icon: 'fa-floppy-o',
+// 			id: 'submit-container',
+// 			callback: createDialog
+// 		}]);
 	}
 
 	if (IPython.notebook.metadata.umich.submit === "yes") {

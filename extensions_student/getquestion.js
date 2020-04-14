@@ -38,7 +38,8 @@ function getUsernameForConfig() {
 		}
 		else {
 			//return window.location.href.split("/")[4];
-			return window.location.href.split("/")[2].split(".")[0];
+//			return window.location.href.split("/")[2].split(".")[0];
+            return URL(window.location.href);
 		}
 	}
 

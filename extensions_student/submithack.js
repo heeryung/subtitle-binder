@@ -37,13 +37,15 @@ define([
             var username_all = getUsername.getUsernameForConfig();
             var data = {};
             if(username_all != "localhost"){
-                username_all = username_all.split("_");
-                var user_id = username_all[username_all.length - 1];
-                var temp = getUsername.getUsernameForConfig();
-                var username = temp.substr(0, temp.length - user_id.length - 1);
-                if(username == ""){
-                    username = user_id;
-                }
+                var username = username_all;
+                var user_id = username_all;
+//                 username_all = username_all.split("_");
+//                 var user_id = username_all[username_all.length - 1];
+//                 var temp = getUsername.getUsernameForConfig();
+//                 var username = temp.substr(0, temp.length - user_id.length - 1);
+//                 if(username == ""){
+//                     username = user_id;
+//                 }
                 data = {"question_id": question_id, "username": username, "user_id": user_id};
             }
             else{
