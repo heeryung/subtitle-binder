@@ -1,5 +1,11 @@
 FROM jupyter/scipy-notebook:cf6258237ff9
 
+#####
+# Run any root commands here
+USER root
+RUN apt-get update
+
+
 ARG NB_USER=jovyan
 ARG NB_UID=1000
 ENV USER ${NB_USER}
@@ -11,14 +17,7 @@ RUN adduser --disabled-password \
     --uid ${NB_UID} \
     ${NB_USER}
 
-#####
-# Run any root commands here
-USER root
-RUN apt-get update
 
-#RUN mkdir /usr/local/etc/jupyterhub
-#ADD jupyterhub_config.py /usr/local/etc/jupyterhub/
-#ADD jupyter_notebook_config.py /usr/local/etc/jupyter/
 RUN mkdir /home/extensions
 COPY extensions_student /home/extensions
 
