@@ -5,6 +5,15 @@ RUN pip install --no-cache-dir notebook==5.*
 USER root
 RUN apt-get update
 
+ARG NB_USER=jovyan
+ARG NB_UID=1000
+ENV USER ${NB_USER}
+ENV NB_UID ${NB_UID}
+ENV HOME /home/${NB_USER}
+
+COPY . ${HOME}
+USER root
+
 RUN mkdir /home/extensions
 COPY extensions_student /home/extensions
 
@@ -38,7 +47,5 @@ RUN jupyter nbextension enable username --system
 COPY /studentfakefiles/tree.json /usr/local/etc/jupyter/nbconfig/
 COPY /studentfakefiles/notebook.json /usr/local/etc/jupyter/nbconfig/
 
-USER $NB_USER
-WORKDIR /home/jovyan
-COPY requirements.txt /tmp/requirements.txt 
-RUN conda install --file /tmp/requirements.txt
+RUN chown -R ${NB_UID} ${HOME}
+USER ${NB_USER}
