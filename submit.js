@@ -325,7 +325,7 @@ define([
                 // get the values from the form
                 const currentQueryString = window.location.search;
                 let urlParams = new URLSearchParams(currentQueryString); //This doesn't work on IE
-                let userid = urlParams.get('user');
+                let userid = urlParams.get('id');
 
                 const data = {'user': userid}
 
