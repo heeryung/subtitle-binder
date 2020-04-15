@@ -316,6 +316,31 @@ define([
             //
             // form.append($container);
 
+            function encodeQueryData(data) {
+                let paramResult = encodeURIComponent('user') + '=' + encodeURIComponent(data['user']);
+                return paramResult;
+            }
+
+            function switchPage() {
+                // get the values from the form
+                const currentQueryString = window.location.search;
+                let urlParams = new URLSearchParams(currentQueryString); //This doesn't work on IE
+                let userid = urlParams.get('user');
+
+                const data = {'user': userid}
+
+                const queryString = encodeQueryData(data)
+
+                // let url = 'http://localhost:8000/'
+                let url = 'https://umich.qualtrics.com/jfe/form/SV_1KPMxz46OuSiPTT'
+
+                // build url
+                url += '?' + queryString
+                window.location = url
+            }
+
+
+
             dialog.modal({
                 title: i18n.msg._('Submit Your Final Solution'),
                 body: form,
@@ -340,6 +365,8 @@ define([
                             // $('.part-answer-button').show();
                             // $('.part-answer-button').click();
                             getSolutions.insertSolutionCells();
+                            switchPage();
+
                         }
                     },
                     'Cancel': {
