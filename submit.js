@@ -341,7 +341,7 @@ define([
 
 
 
-            dialog.modal({s
+            dialog.modal({
                 title: i18n.msg._('Submit Your Final Solution'),
                 body: form,
                 buttons: {
