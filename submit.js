@@ -341,7 +341,7 @@ define([
 
 
 
-            dialog.modal({
+            dialog.modal({s
                 title: i18n.msg._('Submit Your Final Solution'),
                 body: form,
                 buttons: {
@@ -364,8 +364,7 @@ define([
                             // all of them to reveal all answers at once.
                             // $('.part-answer-button').show();
                             // $('.part-answer-button').click();
-                            getSolutions.insertSolutionCells();
-                            switchPage();
+                            $.when(getSolutions.insertSolutionCells()).then(switchPage());
 
                         }
                     },
