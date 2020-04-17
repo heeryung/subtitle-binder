@@ -37,7 +37,7 @@ define([
             var seconds = Math.floor( (t/1000) % 60 );
             var minutes = Math.floor( (t/1000/60) % 60 );
             timeStr = minutes + "m " + seconds + " s";
-            
+
             if (t < 0) {
                 // need to clear interval so it is not submitted twice
                 clearInterval(timeCal);
@@ -46,7 +46,7 @@ define([
             }
             else {
                 // change timer display on button
-                $("#timerBar").find('toolbar-bin-label').text(timeStr);
+                $("#timerBar").find('.toolbar-btn-label').text(timeStr);
             }
         }, 1000)
 
