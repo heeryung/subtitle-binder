@@ -55,7 +55,7 @@ define([
             Jupyter.toolbar.add_buttons_group([{
                 label: 'Timer',
                 id: 'timerBar',
-                callback: timer
+                handler: timer
             }]);
         };
     }
