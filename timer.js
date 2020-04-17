@@ -31,16 +31,12 @@ define([
         var t = Date.parse(endtime) - Date.parse(new Date());
 
 
-        var timeCal = function (){
-            function timeCalSub() {
-                var seconds = Math.floor( (t/1000) % 60 );
-                var minutes = Math.floor( (t/1000/60) % 60 );
+        var timeCal = setTimeout(function (){
+            var seconds = Math.floor( (t/1000) % 60 );
+            var minutes = Math.floor( (t/1000/60) % 60 );
 
-                return minutes + "m " + seconds + "s "
-            }
-
-            return setTimeout(timeCalSub, 1000)
-        }
+            return "Timer: " + minutes + "m " + seconds + "s "
+        }, 1000)
 
 
         var timeAlert = function (){
