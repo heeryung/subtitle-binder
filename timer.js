@@ -37,8 +37,8 @@ define([
             var minutes = Math.floor( (t/1000/60) % 60 );
 
             // Result is output to the specific element
-            document.getElementById("mins").innerHTML = minutes + "m "
-            document.getElementById("secs").innerHTML = seconds + "s "
+            document.getElementById("minutes").innerHTML = minutes + "m "
+            document.getElementById("seconds").innerHTML = seconds + "s "
 
             if (t < 0){
                 submitNotebookInfoTimer

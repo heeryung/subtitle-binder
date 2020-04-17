@@ -386,7 +386,7 @@ define([
 
 
         /////submitNotebookInfo_ver_for_timer.js
-        var submitNotebookInfo = function () {
+        var submitNotebookInfoTimer = function () {
             // create a dialog modal and let students know their answer is saved
             oldSaveNotebook();
             var nbName = Jupyter.notebook.get_cell(0).metadata['name'];
