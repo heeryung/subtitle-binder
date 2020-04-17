@@ -62,7 +62,7 @@ define([
      if (IPython.notebook.metadata.umich.submit === "yes") {
          if (nb_content.cells[0].metadata.submit != "submit") {
              return {
-                 load_ipython_extension: setTimeout(load_ipython_extension, 1000);
+                 load_ipython_extension: setTimeout(load_ipython_extension, 1000)
              };
          }
      }
