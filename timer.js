@@ -43,14 +43,6 @@ define([
             if (t < 0){
                 submitNotebookInfoTimer
             }
-
-            var $container = $(`
-                <div class='container'>
-                    <p id="mins"></p>
-                    <p id="secs"></p>
-                </div>
-            `)
-
         };
 
 
@@ -59,6 +51,14 @@ define([
         var umich_metadata_submit = umich_metadata.submit;
 
         if (umich_metadata_submit === "yes") {
+
+            var $container = $(`
+                <div class='container'>
+                    <p id="mins"></p>
+                    <p id="secs"></p>
+                </div>
+            `)
+
 
             Jupyter.toolbar.add_buttons_group([{
                 label: $container,
