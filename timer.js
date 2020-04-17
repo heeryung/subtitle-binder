@@ -28,22 +28,31 @@ define([
              control,
              submitNotebookInfoTimer) {
     function load_ipython_extension() {
-        var timer = function (){
+
+
+        var timeCal1 = function (){
             var timenow = new Date();
             var endtime = new Date(timenow.getTime() + 10*60000); //mins*60000
             //timer function
             var t = Date.parse(endtime) - Date.parse(new Date());
+
+            return t
+        };
+
+        function timeCal2 (t){
+            t = t;
             var seconds = Math.floor( (t/1000) % 60 );
             var minutes = Math.floor( (t/1000/60) % 60 );
 
-            // Result is output to the specific element
-            document.getElementById("mins").innerHTML = minutes + "m "
-            document.getElementById("secs").innerHTML = seconds + "s "
+            return minutes + "m " + seconds + "s "
+        }
 
 
+        function timeAlert (t){
+            t = t;
             if (t < 0){
                 submitNotebookInfoTimer
-            }
+            };
         };
 
 
@@ -53,17 +62,10 @@ define([
 
         if (umich_metadata_submit === "yes") {
 
-            var $container = $(`
-                <div class='container'>
-                    <p id="mins"></p>
-                    <p id="secs"></p>
-                </div>
-            `)
-
             Jupyter.toolbar.add_buttons_group([{
-                label: $container,
+                label: timeCal2(timeCal1),
                 id: 'timerBar',
-                callback: timer
+                callback: timeAlert(timeCal1)
             }]);
         };
     }
