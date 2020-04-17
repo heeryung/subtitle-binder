@@ -32,10 +32,14 @@ define([
 
 
         var timeCal = function (){
-            var seconds = Math.floor( (t/1000) % 60 );
-            var minutes = Math.floor( (t/1000/60) % 60 );
+            function timeCalSub() {
+                var seconds = Math.floor( (t/1000) % 60 );
+                var minutes = Math.floor( (t/1000/60) % 60 );
 
-            return minutes + "m " + seconds + "s "
+                return minutes + "m " + seconds + "s "
+            }
+
+            return setTimeout(timeCalSub, 1000)
         }
 
 
@@ -62,7 +66,7 @@ define([
      if (IPython.notebook.metadata.umich.submit === "yes") {
          if (nb_content.cells[0].metadata.submit != "submit") {
              return {
-                 load_ipython_extension: setTimeout(load_ipython_extension, 1000)
+                 load_ipython_extension: load_ipython_extension
              };
          }
      }
