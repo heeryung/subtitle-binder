@@ -26,7 +26,7 @@ define([
     var load_ipython_extension = function () {
 
         var timenow = new Date();
-        var endtime = new Date(timenow.getTime() + 10*60000); //mins*60000
+        var endtime = new Date(timenow.getTime() + 60000); //mins*60000
         //timer function
         var t = Date.parse(endtime) - Date.parse(new Date());
 
@@ -36,19 +36,21 @@ define([
             t = endtime - timenow;
             var seconds = Math.floor( (t/1000) % 60 );
             var minutes = Math.floor( (t/1000/60) % 60 );
-
-            if (t < 0){
+            timeStr = minutes + "m " + seconds + " s";
+            
+            if (t < 0) {
+                // need to clear interval so it is not submitted twice
                 clearInterval(timeCal);
-                submitNotebookInfoTimer // when time is out, automatically submit the notebook.
+                console.log("submitting notebook");
+                // submitNotebookInfoTimer
             }
             else {
-                return minutes + "m " + seconds + "s "
+                // change timer display on button
+                $("#timerBar").find('toolbar-bin-label').text(timeStr);
             }
-
-
         }, 1000)
 
-
+        let empty = () => {}
 
         var umich_metadata = IPython.notebook.metadata.umich;
         var umich_metadata_submit = umich_metadata.submit;
@@ -56,8 +58,9 @@ define([
         if (umich_metadata_submit === "yes") {
 
             Jupyter.toolbar.add_buttons_group([{
-                label: timeCal,
-                id: 'timerBar'
+                label: "10m 00s",
+                id: 'timerBar',
+                callback: empty
             }]);
         };
     }
