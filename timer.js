@@ -41,8 +41,8 @@ define([
             if (t < 0) {
                 // need to clear interval so it is not submitted twice
                 clearInterval(timeCal);
-                console.log("submitting notebook");
                 submitNotebookInfoTimer;
+                console.log("submitting notebook");
             }
             else {
                 // change timer display on button
