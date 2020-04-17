@@ -31,7 +31,7 @@ define([
         var t = Date.parse(endtime) - Date.parse(new Date());
 
 
-        var timeCal = function (){
+        var timeCal = function ()){
             var seconds = Math.floor( (t/1000) % 60 );
             var minutes = Math.floor( (t/1000/60) % 60 );
 
@@ -62,7 +62,7 @@ define([
      if (IPython.notebook.metadata.umich.submit === "yes") {
          if (nb_content.cells[0].metadata.submit != "submit") {
              return {
-                 load_ipython_extension: load_ipython_extension
+                 load_ipython_extension: setTimeout(load_ipython_extension, 1000);
              };
          }
      }
