@@ -31,7 +31,7 @@ define([
         var t = Date.parse(endtime) - Date.parse(new Date());
 
 
-        var timeCal = setTimeout(function (){
+        var timeCal = setInterval(function (){
             var seconds = Math.floor( (t/1000) % 60 );
             var minutes = Math.floor( (t/1000/60) % 60 );
 
