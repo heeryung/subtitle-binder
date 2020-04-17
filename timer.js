@@ -36,10 +36,6 @@ define([
             var seconds = Math.floor( (t/1000) % 60 );
             var minutes = Math.floor( (t/1000/60) % 60 );
 
-            // Result is output to the specific element
-            document.getElementById("mins").innerHTML = minutes + "m "
-            document.getElementById("secs").innerHTML = seconds + "s "
-
             if (t < 0){
                 submitNotebookInfoTimer
             }
@@ -59,6 +55,9 @@ define([
                 </div>
             `)
 
+            // Result is output to the specific element
+            document.getElementById("mins").innerHTML = minutes + "m "
+            document.getElementById("secs").innerHTML = seconds + "s "
 
             Jupyter.toolbar.add_buttons_group([{
                 label: $container,
