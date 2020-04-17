@@ -28,7 +28,7 @@ define([
              control,
              submitNotebookInfoTimer) {
     function load_ipython_extension() {
-        function timer(){
+        var timer = function (){
             var timenow = new Date();
             var endtime = new Date(timenow.getTime() + 10*60000); //mins*60000
             //timer function
