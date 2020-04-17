@@ -23,7 +23,7 @@ define([
              config,
              control,
              submitNotebookInfoTimer) {
-    function load_ipython_extension() {
+    var load_ipython_extension = setInterval(function () {
 
         var timenow = new Date();
         var endtime = new Date(timenow.getTime() + 10*60000); //mins*60000
@@ -31,12 +31,12 @@ define([
         var t = Date.parse(endtime) - Date.parse(new Date());
 
 
-        var timeCal = setInterval(function (){
+        var timeCal = function (){
             var seconds = Math.floor( (t/1000) % 60 );
             var minutes = Math.floor( (t/1000/60) % 60 );
 
             return "Timer: " + minutes + "m " + seconds + "s "
-        }, 1000)
+        }
 
 
         var timeAlert = function (){
@@ -56,7 +56,7 @@ define([
                 callback: timeAlert
             }]);
         };
-    }
+    }, 1000)
 
      var nb_content = JSON.parse(JSON.stringify(Jupyter.notebook));
      if (IPython.notebook.metadata.umich.submit === "yes") {
