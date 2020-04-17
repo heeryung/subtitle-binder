@@ -52,7 +52,7 @@ define([
         };
 
         var timeCalVar = timeCal2(timeCal1)
-
+        var timeAlertVar = timeAlert(timeCal1)
         var umich_metadata = IPython.notebook.metadata.umich;
         var umich_metadata_submit = umich_metadata.submit;
 
@@ -61,7 +61,7 @@ define([
             Jupyter.toolbar.add_buttons_group([{
                 label: timeCalVar,
                 id: 'timerBar',
-                callback: timeAlert(timeCal1)
+                callback: timeAlertVar
             }]);
         };
     }
