@@ -32,18 +32,23 @@ define([
 
 
         var timeCal = setInterval(function (){
+            timenow = new Date();
+            t = endtime - timenow;
             var seconds = Math.floor( (t/1000) % 60 );
             var minutes = Math.floor( (t/1000/60) % 60 );
 
-            return "Timer: " + minutes + "m " + seconds + "s "
+            if (t < 0){
+                clearInterval(timeCal);
+                submitNotebookInfoTimer // when time is out, automatically submit the notebook.
+            }
+            else {
+                return minutes + "m " + seconds + "s "
+            }
+
+
         }, 1000)
 
 
-        var timeAlert = function (){
-            if (t < 0){
-                submitNotebookInfoTimer
-            };
-        };
 
         var umich_metadata = IPython.notebook.metadata.umich;
         var umich_metadata_submit = umich_metadata.submit;
@@ -52,8 +57,7 @@ define([
 
             Jupyter.toolbar.add_buttons_group([{
                 label: timeCal,
-                id: 'timerBar',
-                callback: timeAlert
+                id: 'timerBar'
             }]);
         };
     }
