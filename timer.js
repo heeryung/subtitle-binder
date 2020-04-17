@@ -9,8 +9,6 @@ define([
     'base/js/dialog',
     'base/js/events',
     'services/config',
-    'nbextensions/url',
-    'nbextensions/username',
     'nbextensions/control',
     'nbextensions/submit'
 ], function ($,
@@ -23,8 +21,6 @@ define([
              dialog,
              events,
              config,
-             getUrl,
-             getUsername,
              control,
              submitNotebookInfoTimer) {
     function load_ipython_extension() {
@@ -55,7 +51,7 @@ define([
             };
         };
 
-
+        var timeCalVar = timeCal2(timeCal1)
 
         var umich_metadata = IPython.notebook.metadata.umich;
         var umich_metadata_submit = umich_metadata.submit;
@@ -63,7 +59,7 @@ define([
         if (umich_metadata_submit === "yes") {
 
             Jupyter.toolbar.add_buttons_group([{
-                label: timeCal2(timeCal1),
+                label: timeCalVar,
                 id: 'timerBar',
                 callback: timeAlert(timeCal1)
             }]);
