@@ -36,13 +36,13 @@ define([
             t = endtime - timenow;
             var seconds = Math.floor( (t/1000) % 60 );
             var minutes = Math.floor( (t/1000/60) % 60 );
-            timeStr = minutes + "m " + seconds + " s";
+            timeStr = minutes + "m " + seconds + "s";
 
             if (t < 0) {
                 // need to clear interval so it is not submitted twice
                 clearInterval(timeCal);
                 console.log("submitting notebook");
-                // submitNotebookInfoTimer
+                submitNotebookInfoTimer;
             }
             else {
                 // change timer display on button
