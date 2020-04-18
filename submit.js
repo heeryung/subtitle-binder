@@ -386,14 +386,14 @@ define([
 
 
         /////submitNotebookInfo_ver_for_timer.js
-        var submitNotebookInfoTimer = function () {
+        function submitNotebookInfoTimer() {
             // create a dialog modal and let students know their answer is saved
             oldSaveNotebook();
             var nbName = Jupyter.notebook.get_cell(0).metadata['name'];
             var description = Jupyter.notebook.get_cell(0).metadata['description'];
             var license = Jupyter.notebook.get_cell(0).metadata['license'];
             var form = $("<form></form>").attr("id", "save-form");
-            form.append("<h4>Warning: Time is up. Your response has recorded. Please proceed. <br></h4>");
+            form.append("<h4>Warning: Time is up. Your response has recorded. Please proceed. </h4>");
 
             function encodeQueryData(data) {
                 let paramResult = encodeURIComponent('user') + '=' + encodeURIComponent(data['user']);
