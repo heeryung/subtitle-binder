@@ -1,28 +1,24 @@
 define([
     'jquery',
     'require',
-    'contents',
     'base/js/namespace',
-    'base/js/utils',
-    'tree/js/newnotebook',
-    'base/js/i18n',
     'base/js/dialog',
-    'base/js/events',
-    'services/config',
+    'base/js/i18n',
+    'nbextensions/url',
+    'nbextensions/getsolutions',
+    'nbextensions/username',
     'nbextensions/control',
     'nbextensions/submit'
 ], function ($,
-             require,
-             contents_service,
-             IPython,
-             utils,
-             newnotebook,
-             i18n,
-             dialog,
-             events,
-             config,
-             control,
-             submitNotebookInfoTimer) {
+            require,
+            Jupyter,
+            dialog,
+            i18n,
+            getUrl,
+            getSolutions,
+            getUsername,
+            control,
+            submitNotebookInfoTimer) {
     var load_ipython_extension = function () {
 
         var timenow = new Date();
@@ -41,7 +37,7 @@ define([
             if (t < 0) {
                 // need to clear interval so it is not submitted twice
                 clearInterval(timeCal);
-                submitNotebookInfoTimer();
+                submitNotebookInfoTimer;
                 console.log("submitting notebook");
             }
             else {
