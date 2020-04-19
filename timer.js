@@ -8,7 +8,8 @@ define([
     'nbextensions/getsolutions',
     'nbextensions/username',
     'nbextensions/control',
-    'nbextensions/timersubmit'
+    'nbextensions/timersubmit',
+    'nbextensions/submitfunction'
 ], function ($,
             require,
             Jupyter,
@@ -18,7 +19,8 @@ define([
             getSolutions,
             getUsername,
             control,
-            timersubmit) {
+            timersubmit,
+            submitsub) {
     var load_ipython_extension = function () {
 
         var timenow = new Date();
