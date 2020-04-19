@@ -36,7 +36,7 @@ define([
             timeStr = minutes + "m " + seconds + "s";
 
             if (t < 0) {
-                // need to clear interval so it is not submitted twice
+                submitsub.oldSaveNotebook();
                 timerResult = timersubmit.submitNotebookInfoTimer();
                 if (timerResult == true) {
                     console.log("submitting notebook");
@@ -44,6 +44,7 @@ define([
                 else {
                     console.log("failed to submit notebook");
                 }
+                // need to clear interval so it is not submitted twice
                 clearInterval(timeCal);
             }
             else {
