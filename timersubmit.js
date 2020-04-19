@@ -9,8 +9,6 @@ define([
     'nbextensions/username',
     'nbextensions/control',
     'nbextensions/submit',
-    'nbextensions/submit',
-    'nbextensions/submit'
 ], function ($,
              require,
              Jupyter,
@@ -20,9 +18,7 @@ define([
              getSolutions,
              getUsername,
              control,
-             dispatchSubmitSolutionEvent,
-             handlerSubmit,
-             oldSaveNotebook) {
+             submit) {
 
      /////submitNotebookInfo_ver_for_timer.js
      var submitNotebookInfoTimer = function() {
