@@ -419,39 +419,38 @@ define([
             }
 
 
+            function (dialog){
+                dialog.modal({
+                    title: i18n.msg._('Submit Your Final Solution'),
+                    body: form,
+                    buttons: {
+                        'Submit': {
+                            'class': 'btn-primary', 'click': function () {
+                                handlerSubmit(license, nbName, description);
+                                dispatchSubmitSolutionEvent();
+                                Jupyter.notebook.get_cell(0).metadata.submit = "submit";
+                                oldSaveNotebook();
+    //                             var difficulty = ratingsMap['difficulty-rating-star'];
+    //                             var quality = ratingsMap['quality-rating-star'];
+    //                             var comments = $("#comments").val();
+    //                             submitRating(difficulty, quality, comments);
+                                $($('#save-notbook').children()[0]).prop('disabled', true);
+                                $('#submit-solution').attr('disabled', 'disabled');
+                                $('#submit-solution').hide();
 
-            dialog.modal({
-                title: i18n.msg._('Submit Your Final Solution'),
-                body: form,
-                buttons: {
-                    'Submit': {
-                        'class': 'btn-primary', 'call': function () {
-                            handlerSubmit(license, nbName, description);
-                            dispatchSubmitSolutionEvent();
-                            Jupyter.notebook.get_cell(0).metadata.submit = "submit";
-                            oldSaveNotebook();
-//                             var difficulty = ratingsMap['difficulty-rating-star'];
-//                             var quality = ratingsMap['quality-rating-star'];
-//                             var comments = $("#comments").val();
-//                             submitRating(difficulty, quality, comments);
-                            $($('#save-notbook').children()[0]).prop('disabled', true);
-                            $('#submit-solution').attr('disabled', 'disabled');
-                            $('#submit-solution').hide();
-
-                            // For now, we are not using the show answer buttons.
-                            // We will keep them hidden, but programmatically click on
-                            // all of them to reveal all answers at once.
-                            // $('.part-answer-button').show();
-                            // $('.part-answer-button').click();
-                            $.when(getSolutions.insertSolutionCells()).then(switchPage());
-
+                                // For now, we are not using the show answer buttons.
+                                // We will keep them hidden, but programmatically click on
+                                // all of them to reveal all answers at once.
+                                // $('.part-answer-button').show();
+                                // $('.part-answer-button').click();
+                                $.when(getSolutions.insertSolutionCells()).then(switchPage());
+                            }
                         }
-                    }
-                },
-                notebook: Jupyter.notebook,
-                keyboard_manager: Jupyter.keyboard_manager
-            });
-
+                    },
+                    notebook: Jupyter.notebook,
+                    keyboard_manager: Jupyter.keyboard_manager
+                });
+            }
 
         };
 
