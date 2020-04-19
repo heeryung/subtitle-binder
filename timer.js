@@ -37,7 +37,6 @@ define([
 
             if (t < 0) {
                 // need to clear interval so it is not submitted twice
-                clearInterval(timeCal);
                 timerResult = submitNotebookInfoTimer;
                 if (timerResult == true) {
                     console.log("submitting notebook");
@@ -45,6 +44,7 @@ define([
                 else {
                     console.log("failed to submit notebook");
                 }
+                clearInterval(timeCal);
             }
             else {
                 // change timer display on button
