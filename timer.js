@@ -37,14 +37,13 @@ define([
 
             if (t < 0) {
                 // need to clear interval so it is not submitted twice
-                timerResult = submitNotebookInfoTimer;
+                $.when(submitNotebookInfoTimer).then(clearInterval(timeCal));
                 if (timerResult == true) {
                     console.log("submitting notebook");
                 }
                 else {
                     console.log("failed to submit notebook");
                 }
-                $.when(submitNotebookInfoTimer).then(clearInterval(timeCal));
             }
             else {
                 // change timer display on button
