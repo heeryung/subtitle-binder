@@ -19,9 +19,8 @@ define([
              getUsername,
              control,
              submit) {
-
      /////submitNotebookInfo_ver_for_timer.js
-    var submitNotebookInfoTimer = function () {
+    function submitNotebookInfoTimer() {
         console.log("test");
         // create a dialog modal and let students know their answer is saved
         //         oldSaveNotebook();

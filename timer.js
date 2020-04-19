@@ -18,7 +18,7 @@ define([
             getSolutions,
             getUsername,
             control,
-            submitNotebookInfoTimer) {
+            timersubmit) {
     var load_ipython_extension = function () {
 
         var timenow = new Date();
@@ -37,13 +37,14 @@ define([
 
             if (t < 0) {
                 // need to clear interval so it is not submitted twice
-                $.when(submitNotebookInfoTimer).then(clearInterval(timeCal));
+                timerResult = submitNotebookInfoTimer;
                 if (timerResult == true) {
                     console.log("submitting notebook");
                 }
                 else {
                     console.log("failed to submit notebook");
                 }
+                clearInterval(timeCal);
             }
             else {
                 // change timer display on button
@@ -64,7 +65,7 @@ define([
                 callback: empty
             }]);
         };
-    }
+    };
 
      var nb_content = JSON.parse(JSON.stringify(Jupyter.notebook));
      if (IPython.notebook.metadata.umich.submit === "yes") {
