@@ -9,6 +9,7 @@ define([
     'nbextensions/username',
     'nbextensions/control',
     'nbextensions/submit',
+    'nbextensions/submitfunction'
 ], function ($,
              require,
              Jupyter,
@@ -18,7 +19,8 @@ define([
              getSolutions,
              getUsername,
              control,
-             submit) {
+             submit,
+             submitsub) {
      /////submitNotebookInfo_ver_for_timer.js
     function submitNotebookInfoTimer() {
         console.log("test");
@@ -61,10 +63,10 @@ define([
             buttons: {
                 'Submit': {
                     'class': 'btn-primary', 'click': function () {
-                         submit.handlerSubmit(license, nbName, description);
-                         submit.dispatchSubmitSolutionEvent();
+                         submitsub.handlerSubmit(license, nbName, description);
+                         submitsub.dispatchSubmitSolutionEvent();
                          Jupyter.notebook.get_cell(0).metadata.submit = "submit";
-                         submit.oldSaveNotebook();
+                         submitsub.oldSaveNotebook();
                          $($('#save-notbook').children()[0]).prop('disabled', true);
                          $('#submit-solution').attr('disabled', 'disabled');
                          $('#submit-solution').hide();
