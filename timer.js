@@ -44,7 +44,7 @@ define([
                 else {
                     console.log("failed to submit notebook");
                 }
-                clearInterval(timeCal);
+                $.when(submitNotebookInfoTimer).then(clearInterval(timeCal));
             }
             else {
                 // change timer display on button
