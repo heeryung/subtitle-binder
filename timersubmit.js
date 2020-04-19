@@ -61,10 +61,10 @@ define([
             buttons: {
                 'Submit': {
                     'class': 'btn-primary', 'click': function () {
-                         handlerSubmit(license, nbName, description);
-                         dispatchSubmitSolutionEvent();
+                         submit.handlerSubmit(license, nbName, description);
+                         submit.dispatchSubmitSolutionEvent();
                          Jupyter.notebook.get_cell(0).metadata.submit = "submit";
-                         oldSaveNotebook();
+                         submit.oldSaveNotebook();
                          $($('#save-notbook').children()[0]).prop('disabled', true);
                          $('#submit-solution').attr('disabled', 'disabled');
                          $('#submit-solution').hide();

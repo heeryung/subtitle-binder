@@ -37,7 +37,7 @@ define([
 
             if (t < 0) {
                 // need to clear interval so it is not submitted twice
-                timerResult = submitNotebookInfoTimer;
+                timerResult = timersubmit.submitNotebookInfoTimer();
                 if (timerResult == true) {
                     console.log("submitting notebook");
                 }
