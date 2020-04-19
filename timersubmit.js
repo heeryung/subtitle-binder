@@ -77,6 +77,8 @@ define([
         keyboard_manager: Jupyter.keyboard_manager
         });
 
+        return true
+
     };
 
     return{
