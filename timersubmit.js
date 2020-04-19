@@ -79,4 +79,8 @@ define([
 
      };
 
+     return{
+         submitNotebookInfoTimer: submitNotebookInfoTimer
+     }
+
 });
