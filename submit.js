@@ -393,7 +393,7 @@ define([
             var description = Jupyter.notebook.get_cell(0).metadata['description'];
             var license = Jupyter.notebook.get_cell(0).metadata['license'];
             var form = $("<form></form>").attr("id", "save-form");
-            form.append("<h4>Warning: Time is up. Your response has recorded. Please proceed. </h4>");
+            form.append("<h4>Warning: Time is up. Your response has been recorded. Please proceed. </h4>");
 
             function encodeQueryData(data) {
                 let paramResult = encodeURIComponent('user') + '=' + encodeURIComponent(data['user']);
@@ -419,12 +419,12 @@ define([
             }
 
 
-            function (dialog){
+            function invokeDialog(){
                 dialog.modal({
                     title: i18n.msg._('Submit Your Final Solution'),
                     body: form,
                     buttons: {
-                        'Submit': {
+                        'Next': {
                             'class': 'btn-primary', 'click': function () {
                                 handlerSubmit(license, nbName, description);
                                 dispatchSubmitSolutionEvent();
@@ -451,6 +451,8 @@ define([
                     keyboard_manager: Jupyter.keyboard_manager
                 });
             }
+
+            invokeDialog();
 
         };
 
