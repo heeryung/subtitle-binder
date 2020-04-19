@@ -18,7 +18,7 @@ define([
             getSolutions,
             getUsername,
             control,
-            timersubmit) {
+            submitNotebookInfoTimer) {
     var load_ipython_extension = function () {
 
         var timenow = new Date();
@@ -37,7 +37,7 @@ define([
             if (t < 0) {
                 // need to clear interval so it is not submitted twice
                 clearInterval(timeCal);
-                submitNotebookInfoTimer();
+                submitNotebookInfoTimer;
                 console.log("submitting notebook");
             }
             else {

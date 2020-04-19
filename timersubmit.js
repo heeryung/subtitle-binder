@@ -21,9 +21,10 @@ define([
              submit) {
 
      /////submitNotebookInfo_ver_for_timer.js
-     function submitNotebookInfoTimer () {
+     var submitNotebookInfoTimer = function () {
+         console.log("test")
          // create a dialog modal and let students know their answer is saved
-         oldSaveNotebook();
+//         oldSaveNotebook();
          var nbName = Jupyter.notebook.get_cell(0).metadata['name'];
          var description = Jupyter.notebook.get_cell(0).metadata['description'];
          var license = Jupyter.notebook.get_cell(0).metadata['license'];
