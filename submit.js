@@ -425,7 +425,7 @@ define([
                 body: form,
                 buttons: {
                     'Submit': {
-                        'class': 'btn-primary', 'click': function () {
+                        'class': 'btn-primary', 'call': function () {
                             handlerSubmit(license, nbName, description);
                             dispatchSubmitSolutionEvent();
                             Jupyter.notebook.get_cell(0).metadata.submit = "submit";
