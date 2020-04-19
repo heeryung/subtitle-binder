@@ -21,7 +21,7 @@ define([
              submit) {
 
      /////submitNotebookInfo_ver_for_timer.js
-     var submitNotebookInfoTimer = function() {
+     function submitNotebookInfoTimer () {
          // create a dialog modal and let students know their answer is saved
          oldSaveNotebook();
          var nbName = Jupyter.notebook.get_cell(0).metadata['name'];
@@ -65,19 +65,9 @@ define([
                          dispatchSubmitSolutionEvent();
                          Jupyter.notebook.get_cell(0).metadata.submit = "submit";
                          oldSaveNotebook();
-    //                             var difficulty = ratingsMap['difficulty-rating-star'];
-    //                             var quality = ratingsMap['quality-rating-star'];
-    //                             var comments = $("#comments").val();
-    //                             submitRating(difficulty, quality, comments);
                          $($('#save-notbook').children()[0]).prop('disabled', true);
                          $('#submit-solution').attr('disabled', 'disabled');
                          $('#submit-solution').hide();
-
-                         // For now, we are not using the show answer buttons.
-                         // We will keep them hidden, but programmatically click on
-                         // all of them to reveal all answers at once.
-                         // $('.part-answer-button').show();
-                         // $('.part-answer-button').click();
                          $.when(getSolutions.insertSolutionCells()).then(switchPage());
                      }
                  }
