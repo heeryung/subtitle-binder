@@ -18,7 +18,7 @@ define([
             getSolutions,
             getUsername,
             control,
-            submitNotebookInfoTimer) {
+            timersubmit) {
     var load_ipython_extension = function () {
 
         var timenow = new Date();
