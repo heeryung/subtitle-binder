@@ -8,7 +8,7 @@ define([
     'nbextensions/getsolutions',
     'nbextensions/username',
     'nbextensions/control',
-    'nbextensions/submit'
+    'nbextensions/timersubmit'
 ], function ($,
             require,
             Jupyter,
