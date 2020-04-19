@@ -28,7 +28,7 @@ define([
 
 
         var timeCal = setInterval(function (){
-            timerResult = false;
+            var timerResult = false;
             timenow = new Date();
             t = endtime - timenow;
             var seconds = Math.floor( (t/1000) % 60 );
@@ -38,12 +38,12 @@ define([
             if (t < 0) {
                 // need to clear interval so it is not submitted twice
                 clearInterval(timeCal);
-                var timerResult = submitNotebookInfoTimer;
-                if (timerResult) {
+                timerResult = submitNotebookInfoTimer;
+                if (timerResult == true) {
                     console.log("submitting notebook");
                 }
                 else {
-                    console.log("failed to submit notebook")
+                    console.log("failed to submit notebook");
                 }
             }
             else {

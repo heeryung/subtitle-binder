@@ -22,7 +22,7 @@ define([
 
      /////submitNotebookInfo_ver_for_timer.js
     var submitNotebookInfoTimer = function () {
-        console.log("test")
+        console.log("test");
         // create a dialog modal and let students know their answer is saved
         //         oldSaveNotebook();
         var nbName = Jupyter.notebook.get_cell(0).metadata['name'];
@@ -57,24 +57,24 @@ define([
 
 
         dialog.modal({
-        title: i18n.msg._('Submit Your Final Solution'),
-        body: form,
-        buttons: {
-            'Submit': {
-                'class': 'btn-primary', 'click': function () {
-                     handlerSubmit(license, nbName, description);
-                     dispatchSubmitSolutionEvent();
-                     Jupyter.notebook.get_cell(0).metadata.submit = "submit";
-                     oldSaveNotebook();
-                     $($('#save-notbook').children()[0]).prop('disabled', true);
-                     $('#submit-solution').attr('disabled', 'disabled');
-                     $('#submit-solution').hide();
-                     $.when(getSolutions.insertSolutionCells()).then(switchPage());
-                 }
-            }
-        },
-        notebook: Jupyter.notebook,
-        keyboard_manager: Jupyter.keyboard_manager
+            title: i18n.msg._('Submit Your Final Solution'),
+            body: form,
+            buttons: {
+                'Submit': {
+                    'class': 'btn-primary', 'click': function () {
+                         handlerSubmit(license, nbName, description);
+                         dispatchSubmitSolutionEvent();
+                         Jupyter.notebook.get_cell(0).metadata.submit = "submit";
+                         oldSaveNotebook();
+                         $($('#save-notbook').children()[0]).prop('disabled', true);
+                         $('#submit-solution').attr('disabled', 'disabled');
+                         $('#submit-solution').hide();
+                         $.when(getSolutions.insertSolutionCells()).then(switchPage());
+                     }
+                }
+            },
+            notebook: Jupyter.notebook,
+            keyboard_manager: Jupyter.keyboard_manager
         });
 
         return true
