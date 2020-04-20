@@ -40,7 +40,7 @@ define([
             console.log(endtime);
         }
         else if (window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD) {
-            var navVar = "back_forward;
+            var navVar = "back_forward";
             endtime = new Date(localStorage.getItem("endtime"));
             console.log(endtime);
         }
