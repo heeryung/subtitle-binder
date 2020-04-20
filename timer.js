@@ -28,21 +28,19 @@ define([
         //timer function
         var t = Date.parse(endtime) - Date.parse(new Date());
 
+        // check if the page has been reloaded or a user clicked back button to come back
+        // if the page is reloaded by clicking a refresh button or a back button,
+        // retrieve the endtime saved on local storage not to reset timer
+        var navVar = String(window.performance.getEntriesByType("navigation")[0].type)
+        if (navVar === "reload" || navVar === "back_forward") {
+            endtime = localStorage.getItem("endtime");
+        }
+        else {
+            localStorage.setItem("endtime", endtime);
+        }
 
         var timeCal = setInterval(function (){
             var timerResult = false;
-
-            // check if the page has been reloaded or a user clicked back button to come back
-            // if the page is reloaded by clicking a refresh button or a back button,
-            // retrieve the endtime saved on local storage not to reset timer
-            var navVar = String(window.performance.getEntriesByType("navigation")[0].type)
-            if (navVar === "reload" || navVar === "back_forward") {
-                endtime = localStorage.getItem("endtime");
-            }
-            else {
-                localStorage.setItem("endtime", endtime);
-            }
-
 
             timenow = new Date();
             t = endtime - timenow;
