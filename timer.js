@@ -29,7 +29,8 @@ define([
         // retrieve the endtime saved on local storage not to reset timer
         var navVar = String(window.performance.getEntriesByType("navigation")[0].type)
         if (navVar === "reload" || navVar === "back_forward") {
-            endtime = localStorage.getItem("endtime");
+            endtime = new Date(localStorage.getItem("endtime"));
+            console.log(endtime)
         }
         else {
             var timenow = new Date();
