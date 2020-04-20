@@ -34,6 +34,16 @@ define([
                 console.log(endtime)
             }
         }
+        else if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD) {
+            var navVar = "reload"
+            endtime = new Date(localStorage.getItem("endtime"));
+            console.log(endtime)
+        }
+        else if (window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD) {
+            var navVar = "back_forward"
+            endtime = new Date(localStorage.getItem("endtime"));
+            console.log(endtime)
+        }
         else {
             var timenow = new Date();
             var endtime = new Date(timenow.getTime() + 10*60000); //mins*60000
