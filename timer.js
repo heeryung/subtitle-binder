@@ -22,11 +22,7 @@ define([
             timersubmit,
             submitsub) {
     var load_ipython_extension = function () {
-
-        var timenow = new Date();
-        var endtime = new Date(timenow.getTime() + 60000); //mins*60000
-        //timer function
-        var t = Date.parse(endtime) - Date.parse(new Date());
+        console.log("reload testing")
 
         // check if the page has been reloaded or a user clicked back button to come back
         // if the page is reloaded by clicking a refresh button or a back button,
@@ -35,9 +31,12 @@ define([
         if (navVar === "reload" || navVar === "back_forward") {
             endtime = localStorage.getItem("endtime");
         }
-        else {
-            localStorage.setItem("endtime", endtime);
-        }
+        
+        var timenow = new Date();
+        var endtime = new Date(timenow.getTime() + 60000); //mins*60000
+        localStorage.setItem("endtime", endtime);
+        //timer function
+        var t = Date.parse(endtime) - Date.parse(new Date());
 
         var timeCal = setInterval(function (){
             var timerResult = false;
