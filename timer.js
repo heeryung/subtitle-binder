@@ -27,10 +27,12 @@ define([
         // check if the page has been reloaded or a user clicked back button to come back
         // if the page is reloaded by clicking a refresh button or a back button,
         // retrieve the endtime saved on local storage not to reset timer
-        var navVar = String(window.performance.getEntriesByType("navigation")[0].type)
-        if (navVar === "reload" || navVar === "back_forward") {
-            endtime = new Date(localStorage.getItem("endtime"));
-            console.log(endtime)
+        if (window.performance && window.performance.getEntriesByType('navigation').length) {
+            var navVar = String(window.performance.getEntriesByType("navigation")[0].type)
+            if (navVar === "reload" || navVar === "back_forward") {
+                endtime = new Date(localStorage.getItem("endtime"));
+                console.log(endtime)
+            }
         }
         else {
             var timenow = new Date();
