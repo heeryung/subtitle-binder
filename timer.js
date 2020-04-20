@@ -48,7 +48,7 @@ define([
             var timenow = new Date();
             var endtime = new Date(timenow.getTime() + 10*60000); //mins*60000
             localStorage.setItem("endtime", endtime);
-            var t = Date.parse(endtime) - Date.parse(new Date());
+//            var t = Date.parse(endtime) - Date.parse(new Date());
         }
 
 
@@ -56,7 +56,7 @@ define([
             var timerResult = false;
 
             timenow = new Date();
-            t = endtime - timenow;
+            var t = endtime - timenow;
             // saving the end timeout
             // if page is reloaded then load back up the end timeout
 
