@@ -31,8 +31,24 @@ define([
 
         var timeCal = setInterval(function (){
             var timerResult = false;
+
+            // check if the page has been reloaded or a user clicked back button to come back
+            // if the page is reloaded by clicking a refresh button or a back button,
+            // retrieve the endtime saved on local storage not to reset timer
+            var navVar = String(window.performance.getEntriesByType("navigation")[0].type)
+            if (navVar === "reload" || navVar === "back_forward") {
+                endtime = localStorage.getItem("endtime");
+            }
+            else {
+                localStorage.setItem("endtime", endtime);
+            }
+
+
             timenow = new Date();
             t = endtime - timenow;
+            // saving the end timeout
+            // if page is reloaded then load back up the end timeout
+
             var seconds = Math.floor( (t/1000) % 60 );
             var minutes = Math.floor( (t/1000/60) % 60 );
             timeStr = minutes + "m " + seconds + "s";
