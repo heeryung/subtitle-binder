@@ -31,17 +31,20 @@ define([
             var navVar = String(window.performance.getEntriesByType("navigation")[0].type)
             if (navVar === "reload" || navVar === "back_forward") {
                 endtime = new Date(localStorage.getItem("endtime"));
+                console.log(1)
                 console.log(endtime)
             }
         }
         else if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD) {
             var navVar = "reload";
             endtime = new Date(localStorage.getItem("endtime"));
+            console.log(2)
             console.log(endtime);
         }
         else if (window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD) {
             var navVar = "back_forward";
             endtime = new Date(localStorage.getItem("endtime"));
+            console.log(3)
             console.log(endtime);
         }
         else {
@@ -49,6 +52,8 @@ define([
             var endtime = new Date(timenow.getTime() + 60000); //mins*60000
             localStorage.setItem("endtime", endtime);
 //            var t = Date.parse(endtime) - Date.parse(new Date());
+            console.log(0)
+            console.log(endtime)
         }
 
 
