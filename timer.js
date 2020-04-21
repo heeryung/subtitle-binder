@@ -22,29 +22,27 @@ define([
             timersubmit,
             submitsub) {
     var load_ipython_extension = function () {
-        console.log("reload testing")
-
         // check if the page has been reloaded or a user clicked back button to come back
         // if the page is reloaded by clicking a refresh button or a back button,
         // retrieve the endtime saved on local storage not to reset timer
-        if (window.performance && window.performance.getEntriesByType('navigation').length) {
-            var navVar = String(window.performance.getEntriesByType("navigation")[0].type)
-            if (navVar === "reload" || navVar === "back_forward") {
-                endtime = new Date(localStorage.getItem("endtime"));
-                console.log(1)
-                console.log(endtime)
-            }
-        }
-        else if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD) {
+        // if (window.performance && window.performance.getEntriesByType('navigation').length) {
+        //     var navVar = String(window.performance.getEntriesByType("navigation")[0].type)
+        //     if (navVar === "reload" || navVar === "back_forward") {
+        //         endtime = new Date(localStorage.getItem("endtime"));
+        //         console.log(1)
+        //         console.log(endtime)
+        //     }
+        // }
+        if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD) {
             var navVar = "reload";
             endtime = new Date(localStorage.getItem("endtime"));
-            console.log(2)
+            console.log(1)
             console.log(endtime);
         }
         else if (window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD) {
             var navVar = "back_forward";
             endtime = new Date(localStorage.getItem("endtime"));
-            console.log(3)
+            console.log(2)
             console.log(endtime);
         }
         else {
