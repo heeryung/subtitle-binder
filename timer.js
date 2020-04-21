@@ -29,8 +29,6 @@ define([
         //     var navVar = String(window.performance.getEntriesByType("navigation")[0].type)
         //     if (navVar === "reload" || navVar === "back_forward") {
         //         endtime = new Date(localStorage.getItem("endtime"));
-        //         console.log(1)
-        //         console.log(endtime)
         //     }
         // }
         if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD) {
@@ -49,7 +47,6 @@ define([
             var timenow = new Date();
             var endtime = new Date(timenow.getTime() + 60000); //mins*60000
             localStorage.setItem("endtime", endtime);
-//            var t = Date.parse(endtime) - Date.parse(new Date());
             console.log(0)
             console.log(endtime)
         }
@@ -60,7 +57,6 @@ define([
 
             timenow = new Date();
             var t = Date.parse(endtime) - Date.parse(new Date());
-            // var t = endtime - timenow;
             // saving the end timeout
             // if page is reloaded then load back up the end timeout
 
