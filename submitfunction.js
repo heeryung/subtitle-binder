@@ -71,9 +71,9 @@ define([
          api_url = getUrl.getUrlForConfig("saveStudentFinalAns");
          var xhr = new XMLHttpRequest();
          xhr.open('POST', api_url, true);
-         xhr.setRequestHeader('Access-Control-Allow-Methods', 'Post, Get, Options');
+         xhr.setRequestHeader('Access-Control-Allow-Methods', 'Post, Get, Options, Put');
          xhr.setRequestHeader('Access-Control-Allow-Origin','*');
-         xhr.setRequestHeader('Access-Control-Allow-Headers', 'Content-Type');
+         xhr.setRequestHeader('Access-Control-Allow-Headers', 'Content-Type, Origin');
          xhr.setRequestHeader('Content-type', 'application/json');
          xhr.send(JSON.stringify(data));
      }
