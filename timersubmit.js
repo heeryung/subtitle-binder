@@ -54,7 +54,7 @@ define([
             window.location = url
         }
 
-        document.getElementsByClassName('close')[0].remove()
+
 
         dialog.modal({
             title: i18n.msg._('Submit Your Final Solution'),
@@ -76,7 +76,7 @@ define([
             notebook: Jupyter.notebook,
             keyboard_manager: Jupyter.keyboard_manager
         });
-
+        document.getElementsByClassName('close')[0].remove();
         return true
 
     };
