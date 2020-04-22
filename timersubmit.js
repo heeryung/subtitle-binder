@@ -23,7 +23,6 @@ define([
              submitsub) {
      /////submitNotebookInfo_ver_for_timer.js
     function submitNotebookInfoTimer() {
-        console.log("test");
         // create a dialog modal and let students know their answer is saved
         //         oldSaveNotebook();
         var nbName = Jupyter.notebook.get_cell(0).metadata['name'];
@@ -67,6 +66,7 @@ define([
                          submitsub.dispatchSubmitSolutionEvent();
                          Jupyter.notebook.get_cell(0).metadata.submit = "submit";
                          submitsub.oldSaveNotebook();
+                         document.getElementsByClassName('close')[0].remove();
                          $($('#save-notbook').children()[0]).prop('disabled', true);
                          $('#submit-solution').attr('disabled', 'disabled');
                          $('#submit-solution').hide();

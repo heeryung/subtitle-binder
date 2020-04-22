@@ -98,8 +98,10 @@ define([
     };
 
      var nb_content = JSON.parse(JSON.stringify(Jupyter.notebook));
+     var ifEnable = control.getExtensionList();
+
      if (IPython.notebook.metadata.umich.submit === "yes") {
-         if (nb_content.cells[0].metadata.submit != "submit") {
+         if (nb_content.cells[0].metadata.submit != "submit" && ifEnable.submit == "true") {
              return {
                  load_ipython_extension: load_ipython_extension
              };
