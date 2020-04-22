@@ -31,13 +31,13 @@ define([
         //         endtime = new Date(localStorage.getItem("endtime"));
         //     }
         // }
-        if (window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD) {
+        if (window.performance && window.performance.navigation.type == window.performance.navigation.TYPE_RELOAD) {
         //    var navVar = "reload";
             endtime = new Date(localStorage.getItem("endtime"));
             console.log(1)
             console.log(endtime);
         }
-        else if (window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD) {
+        else if (window.performance && window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD) {
         //    var navVar = "back_forward";
             endtime = new Date(localStorage.getItem("endtime"));
             console.log(2)
