@@ -54,7 +54,7 @@ define([
             window.location = url
         }
 
-
+        document.getElementsByClassName('close')[0].remove()
 
         dialog.modal({
             title: i18n.msg._('Submit Your Final Solution'),
@@ -66,7 +66,6 @@ define([
                          submitsub.dispatchSubmitSolutionEvent();
                          Jupyter.notebook.get_cell(0).metadata.submit = "submit";
                          submitsub.oldSaveNotebook();
-                         document.getElementsByClassName('close')[0].remove();
                          $($('#save-notbook').children()[0]).prop('disabled', true);
                          $('#submit-solution').attr('disabled', 'disabled');
                          $('#submit-solution').hide();
