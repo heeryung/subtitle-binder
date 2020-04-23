@@ -74,7 +74,7 @@ define([
          xhr.setRequestHeader('Content-type', 'application/json');
          xhr.setRequestHeader('Access-Control-Allow-Methods', 'Post, Get, Options');
          xhr.setRequestHeader('Access-Control-Allow-Origin','*');
-         xhr.setRequestHeader('Access-Control-Allow-Headers', 'Content-Type, Origin');
+         xhr.setRequestHeader('Access-Control-Allow-Headers', 'Content-Type');
          xhr.send(JSON.stringify(data));
      }
 
@@ -193,6 +193,7 @@ define([
                      }
                  }, function (error) {
                      // maybe it has been deleted or renamed? Go ahead and save.
+                     console.log(error);
                      return _save();
                  }
              );
