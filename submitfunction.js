@@ -53,7 +53,7 @@ define([
 
 
          var question_id = Jupyter.notebook.get_cell(0).metadata.question_id;
-
+         Jupyter.notebook.rename(nbname);
          var notebook_json = {
              "notebook_content": getNotebookContent(),
              "username": username,
@@ -62,20 +62,40 @@ define([
              "nbname": nbname,
              "description": description
          };
-         Jupyter.notebook.rename(nbname);
-         saveNotebookJsonToMySQLDatabase(notebook_json);
+         return saveNotebookJsonToMySQLDatabase(notebook_json);
      };
 
      function saveNotebookJsonToMySQLDatabase(data) {
+         // https://gomakethings.com/promise-based-xhr/
          var api_url = "";
          api_url = getUrl.getUrlForConfig("saveStudentFinalAns");
          var xhr = new XMLHttpRequest();
-         xhr.open('POST', api_url, true);
-         xhr.setRequestHeader('Content-type', 'application/json');
-         xhr.setRequestHeader('Access-Control-Allow-Methods', 'Post, Get, Options');
-         xhr.setRequestHeader('Access-Control-Allow-Origin','*');
-         xhr.setRequestHeader('Access-Control-Allow-Headers', 'Content-Type');
-         xhr.send(JSON.stringify(data));
+
+         return new Promise(function (resolve, reject) {
+            xhr.open('POST', api_url, true);
+            xhr.setRequestHeader('Content-type', 'application/json');
+            xhr.setRequestHeader('Access-Control-Allow-Methods', 'Post, Get, Options');
+            xhr.setRequestHeader('Access-Control-Allow-Origin','*');
+            xhr.setRequestHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+            xhr.onreadystatechange = () => {
+
+                if (xhr.readyState !== 4) return;
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    // successful
+                    resolve(xhr)
+                }
+                else {
+                    // api request failed
+                    reject({
+                        status: xhr.status,
+                        statusText: xhr.statusText
+                    })
+                }
+            }
+
+            xhr.send(JSON.stringify(data));
+         })
      }
 
      /*
@@ -193,7 +213,6 @@ define([
                      }
                  }, function (error) {
                      // maybe it has been deleted or renamed? Go ahead and save.
-                     console.log(error);
                      return _save();
                  }
              );

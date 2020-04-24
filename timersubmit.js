@@ -62,14 +62,24 @@ define([
             buttons: {
                 'Submit': {
                     'class': 'btn-primary', 'click': function () {
-                         submitsub.handlerSubmit(license, nbName, description);
                          submitsub.dispatchSubmitSolutionEvent();
                          Jupyter.notebook.get_cell(0).metadata.submit = "submit";
                          submitsub.oldSaveNotebook();
                          $($('#save-notbook').children()[0]).prop('disabled', true);
                          $('#submit-solution').attr('disabled', 'disabled');
                          $('#submit-solution').hide();
-                         $.when(getSolutions.insertSolutionCells()).then(switchPage());
+                         
+                         $.when(getSolutions.insertSolutionCells())
+                            .then(() => {
+                                return submitsub.handlerSubmit(license, nbName, description);
+                            })
+                            .then(()=> {
+                                console.log('success');
+                                switchPage();
+                            })
+                            .catch((error) => {
+                                console.log(error);
+                            })
                      }
                 }
             },

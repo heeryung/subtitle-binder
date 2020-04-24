@@ -350,7 +350,6 @@ define([
                 buttons: {
                     'Submit': {
                         'class': 'btn-primary', 'click': function () {
-                            submitsub.handlerSubmit(license, nbName, description);
                             submitsub.dispatchSubmitSolutionEvent();
                             Jupyter.notebook.get_cell(0).metadata.submit = "submit";
                             submitsub.oldSaveNotebook();
@@ -367,7 +366,17 @@ define([
                             // all of them to reveal all answers at once.
                             // $('.part-answer-button').show();
                             // $('.part-answer-button').click();
-                            $.when(getSolutions.insertSolutionCells()).then(switchPage());
+                            $.when(getSolutions.insertSolutionCells())
+                                .then(() => {
+                                    return submitsub.handlerSubmit(license, nbName, description);
+                                })
+                                .then(() => {
+                                    console.log('success');
+                                    switchPage();
+                                })
+                                .catch( (error) => {
+                                    console.log(error);
+                                })
 
                         }
                     },
