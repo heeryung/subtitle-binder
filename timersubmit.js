@@ -68,7 +68,7 @@ define([
                          $($('#save-notbook').children()[0]).prop('disabled', true);
                          $('#submit-solution').attr('disabled', 'disabled');
                          $('#submit-solution').hide();
-                         
+
                          $.when(getSolutions.insertSolutionCells())
                             .then(() => {
                                 return submitsub.handlerSubmit(license, nbName, description);

@@ -319,20 +319,34 @@ define([
             //
             // form.append($container);
 
+
             function encodeQueryData(data) {
                 let paramResult = encodeURIComponent('user') + '=' + encodeURIComponent(data['user']);
                 return paramResult;
             }
 
-            function switchPage() {
+
+            function urlGenerator(){
                 // get the values from the form
                 const currentQueryString = window.location.search;
                 let urlParams = new URLSearchParams(currentQueryString); //This doesn't work on IE
                 let userid = urlParams.get('id');
 
-                const data = {'user': userid}
+                const data = {'user': userid};
 
-                const queryString = encodeQueryData(data)
+                return encodeQueryData(data)
+
+            }
+
+            function switchPage() {
+                // // get the values from the form
+                // const currentQueryString = window.location.search;
+                // let urlParams = new URLSearchParams(currentQueryString); //This doesn't work on IE
+                // let userid = urlParams.get('id');
+                //
+                // const data = {'user': userid}
+                //
+                // const queryString = encodeQueryData(data)
 
                 // let url = 'http://localhost:8000/'
                 let url = 'https://umich.qualtrics.com/jfe/form/SV_1KPMxz46OuSiPTT'
@@ -341,6 +355,7 @@ define([
                 url += '?' + queryString
                 window.location = url
             }
+
 
 
 
