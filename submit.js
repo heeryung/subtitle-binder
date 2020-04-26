@@ -249,7 +249,7 @@ define([
             var license = Jupyter.notebook.get_cell(0).metadata['license'];
             var form = $("<form></form>").attr("id", "save-form");
             form.append("<h4>Warning: this will be your final submit, once submitted you can not modify it.<br></h4>");
-
+            var queryString = urlGenerator();
 
             // var defaultRating = 3;
             // var ratingsMap = {
@@ -338,7 +338,7 @@ define([
 
             }
 
-            function switchPage() {
+            function switchPage(queryString) {
                 // // get the values from the form
                 // const currentQueryString = window.location.search;
                 // let urlParams = new URLSearchParams(currentQueryString); //This doesn't work on IE
@@ -387,7 +387,7 @@ define([
                                 })
                                 .then(() => {
                                     console.log('success');
-                                    switchPage();
+                                    switchPage(queryString);
                                 })
                                 .catch( (error) => {
                                     console.log(error);
