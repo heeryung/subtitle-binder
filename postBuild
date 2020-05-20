@@ -13,6 +13,7 @@ jupyter nbextension enable jupyterlogger --sys-prefix
 jupyter nbextension enable moveablecell --sys-prefix
 jupyter nbextension enable reloadsolutions --sys-prefix
 jupyter nbextension enable setcolorsandeditable --sys-prefix
+jupyter nbextension enable setupjupytereventlogging --sys-prefix
 jupyter nbextension enable showhints --sys-prefix
 jupyter nbextension enable submit --sys-prefix
 jupyter nbextension enable submitattempt --sys-prefix

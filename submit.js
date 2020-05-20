@@ -248,7 +248,7 @@ define([
             var description = Jupyter.notebook.get_cell(0).metadata['description'];
             var license = Jupyter.notebook.get_cell(0).metadata['license'];
             var form = $("<form></form>").attr("id", "save-form");
-            form.append("<h4>Warning: this will be your final submit, once submitted you can not modify it.<br></h4>");
+            form.append("<h4>Warning: this will be your final submit, once submitted you can not modify it. <br><br> Once you click the submit button, you might see a pop-up warning you that your work hasn't saved. You can ignore the pop-up and proceed.<br></h4>");
             var queryString = urlGenerator();
 
             // var defaultRating = 3;
