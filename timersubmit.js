@@ -38,7 +38,6 @@ define([
             return paramResult;
         }
 
-s
         function urlGenerator(){
             // get the values from the form
             const currentQueryString = window.location.search;
