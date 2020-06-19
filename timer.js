@@ -45,7 +45,7 @@ define([
         }
         else {
             var timenow = new Date();
-            var endtime = new Date(timenow.getTime() + 10*60000); //mins*60000
+            var endtime = new Date(timenow.getTime() + 2*60000); //mins*60000
             localStorage.setItem("endtime", endtime);
             console.log(0)
             console.log(endtime)
